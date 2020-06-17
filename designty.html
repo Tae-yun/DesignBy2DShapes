@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Design by 2D shapes_TY</title>
+</head>
+
+<script id="vertexShaderId" type="x-shader/x-vertex">
+attribute vec2 vTexCoord;
+uniform float Width;
+uniform float Height;
+
+void main()
+{
+	float x=-1.0+2.0*(vTexCoord.x/Width);
+	float y=1.0-2.0*(vTexCoord.y/Height);
+	gl_Position=vec4(x,y,0.0,1.0);
+}
+</script>
+
+<script id="fragmentShaderId" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 Color;
+
+void main()
+{
+	gl_FragColor=Color;
+}
+</script>
+
+<p>
+	<label><b>Shape </b><select id="ShapeMenuBar">
+		<option>Triangle</option>
+		<option>Square</option>
+		<option>Circle</option>
+	</select></label>
+	<label><b>Color </b><select id="ColorMenuBar">
+		<option value="0">Red</option>
+		<option value="1">Yellow</option>
+		<option value="2">Green</option>
+		<option value="3">Blue</option>
+		<option value="4">Magenta</option>
+		<option value="5">Cyan</option>
+		<option value="6">Black</option>
+		<option value="7">White-Eraser</option>
+	</select></label>
+	<a id="DownloadButton" download="image.png">
+	<button type="button" onClick="download()">Download</button></a>
+	<a id="EraseButton"><button type="button" onClick="erase()">Erase</button></a>
+</p>
+
+<script type="text/javascript" src="designty.js"></script>
+
+<body>
+<div>
+<canvas id="ty-canvas" width="512" height="512"
+style="border:solid 1px #000000">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</div>
+</body>
+</html>
